@@ -1,51 +1,32 @@
-# Auth utilities class
+# Jwt read utility
 
 ## Main Functionality
 
-This is a collection of utility functions for use in authentication
+This is a collection of jwt reading functions.
 
 ### Main functions
 
 ```js
-const { jwtUtilAuth, pwdUtilAuth } = require( '@chatpta/auth-util' );
+const jwtReader = require( '@chatpta/jwt-read' );
 ```
 
-Create jwt
+Read jwt
 
 ```js
-const headerObject = {
-    alg: "SHA256", // Mendatory acceptable algorithm
+const jwtMiddleware = jwtReader.verifyJwtAndRole( "admin", publicKey, jwtReader.throwUsedTokenError );
+await jwtMiddleware( req, res, next );
+```
+
+Following the above ```req.jwt``` contains
+
+```js
+{
+    header: {
+    alg:...
+    }
+,
+    payload: {
     ...
-};
-
-const payloadObject = {
-    ...
-};
-
-const jwt = jwtUtilAuth.createSignedJwtFromObject( headerObject, payloadObject, privateKey );
+    }
+}
 ```
-
-Verify jwt signature returns ```true``` or ```false```
-
-```js
-const isVerified = jwtUtilAuth.verifyJwtSignature( jwt, publicKey );
-```
-
-Get header and payload object from jwt.
-
-```js
-const { header, payload } = jwtUtilAuth.getHeaderPayloadFromJwt( jwt );
-```
-
-Create password hash to save in database
-
-```js
-const hash = pwdUtilAuth.createPasswordHashWithRandomSalt( password, secret, algorithm );
-```
-
-Create another password hash based on saved hash to compare.
-
-```js
-const hashForLogin = pwdUtilAuth.createPasswordHashBasedOnSavedAlgorithmSalt( passwordForLogin, savedPasswordHash, secret );
-```
-
