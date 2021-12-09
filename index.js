@@ -7,6 +7,5 @@ module.exports = {
     verifyJwtAndRole: jwtLib.verifyJwtAndRole,
     throwUsedTokenError: jwtLib.throwUsedTokenError,
     doesJwtUserHasRole: jwtLib.doesJwtUserHasRole,
-    validateAndExtractJwtObject: jwtLib.validateAndExtractJwtObject,
 };
 
