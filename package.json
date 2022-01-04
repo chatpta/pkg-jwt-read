@@ -1,6 +1,6 @@
 {
   "name": "@chatpta/jwt-read",
-  "version": "2.0.7",
+  "version": "2.1.7",
   "repository": "https://github.com/chatpta/auth-util",
   "description": "Auth utility functions",
   "main": "index.js",
@@ -18,7 +18,7 @@
     "mocha": "^9.1.3"
   },
   "dependencies": {
-    "@chatpta/auth-util": "^2.1.3",
+    "@chatpta/auth-util": "^2.1.7",
     "@chatpta/validate": "^2.0.7"
   }
 }
