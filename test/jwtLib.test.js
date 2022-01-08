@@ -2,6 +2,7 @@ const { describe, it } = require( "mocha" );
 const assert = require( "assert" );
 const jwt = require( '../lib/jwtLib' );
 const { publicKey } = require( "./keys" );
+const { throwError } = require( "../lib/jwtLib" );
 
 describe( "Lib controller jwt", function () {
 
@@ -175,5 +176,26 @@ describe( "Lib controller jwt", function () {
 
         // Assert
         assert.deepStrictEqual( req.jwt.payload.roles[ 0 ], "admin" );
+    } );
+
+    it( "throws error", function () {
+
+        // Act
+        assert.throws( function () {
+            throwError();
+        }, Error )
+
+        function throwUsedTokenError() {
+            throw new Error( "Used_Token" );
+        }
+
+        assert.throws( function () {
+            throwError( throwUsedTokenError );
+        }, Error )
+
+        assert.doesNotThrow( function () {
+            throwError( () => {
+            } );
+        }, Error )
     } );
 } );
