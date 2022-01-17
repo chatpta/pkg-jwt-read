@@ -1,4 +1,5 @@
-const jwtLib = require( './lib/jwtLib' )
+const jwtLib = require( './lib/jwtLib' );
+const jwtRoles = require( './lib/jwtRoles' );
 
 
 module.exports = {
@@ -7,5 +8,7 @@ module.exports = {
     verifyJwtAndRole: jwtLib.verifyJwtAndRole,
     throwUsedTokenError: jwtLib.throwUsedTokenError,
     doesJwtUserHasRole: jwtLib.doesJwtUserHasRole,
+    itemEditorRole: jwtRoles.getJwtEditorRoleCode,
+    getNameOfRole: jwtRoles.getNameOfRoleFromCode
 };
 
