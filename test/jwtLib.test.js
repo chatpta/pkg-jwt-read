@@ -180,7 +180,7 @@ describe( "Lib controller jwt", function () {
 
     it( "verifyJwt", async function () {
 
-        const validJwt = 'Bearer eyJhbGciOiJzaGE1MTIiLCJ0eXAiOiJKV1QifQ.eyJpYXQiOjE2Mzg3MjM1ODkyOTYsImNsaWVudF9pZCI6ImRhZDZlYjZhLWQwMGYtNDZhNS04N2Y2LWY4MDEwNGMzYTUzOCIsInJvbGVzIjpbImFkbWluIl19.Pt3dA-aOpER4ykEVDbzvJe92uIurz0OSOi3Zd2UjWkexUeFIbW_ID5RlCs47VI0UzZMyCTlNvkMGUA-1aCtN3y_IR2PPUdd51t9F3hTeH5XcqInJpG40wc4aw8XKLm1QG6aCw5HoLHuAxd5oc9cqU1ZuF4LsMpTwr-pJNdjEZug';
+        const validJwt = 'Bearer eyJhbGciOiJzaGE1MTIiLCJ0eXAiOiJKV1QifQ.eyJpYXQiOjE2NDI0NjMzNDQyNzgsImNsaWVudF9pZCI6IjRmZTg5ODlkLWZlOWQtNDEwMS1hZWVmLTVkYjljYmMwNzlkZiIsInJvbGVzIjpbImFkbWluIl0sImVtYWlsX25vdF9jb25maXJtZWQiOnRydWV9.LDT5gfpjtC3PZ8XdbS4QtdEbUWDY_UH3hbdeEt5dDJqOpH-1pHEUvd2N2QtoYmrPby23-X-Y7Oy-8JiGWjxNuLRpUgePuOJzEz4keYOrUTDCE1tL4vmmFk59eXkg0FILOJypAfZom8BM2iecSXkKK1EFKjo6pHZH8XCA3mpg8Lg';
 
         // Arrange
         const req = {
@@ -208,7 +208,7 @@ describe( "Lib controller jwt", function () {
         await jwtMiddleware( req, res, next );
 
         // Assert
-        assert.deepStrictEqual( req.jwt.payload.iat, 1638723589296 );
+        assert.deepStrictEqual( req.jwt.payload.iat, 1642463344278 );
     } );
 
     it( "throws error", function () {
