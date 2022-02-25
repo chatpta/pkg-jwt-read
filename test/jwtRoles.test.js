@@ -4,6 +4,28 @@ const jwtRoles = require( '../lib/jwtRoles' );
 
 describe( "Lib jwt Roles", function () {
 
+    it( "getJwtSellerRoleCode", function () {
+
+        const roleItemEditorCode = "se";
+
+        // Act
+        const receivedCode = jwtRoles.getJwtSellerRoleCode();
+
+        // Assert
+        assert.deepStrictEqual( receivedCode, roleItemEditorCode );
+    } );
+
+    it( "getNameOfSellerRoleFromCode", function () {
+
+        const roleItemEditorCode = "se";
+
+        // Act
+        const receivedCode = jwtRoles.getNameOfRoleFromCode( roleItemEditorCode );
+
+        // Assert
+        assert.deepStrictEqual( receivedCode, "seller" );
+    } );
+
     it( "getJwtAdminRoleCode", function () {
 
         const roleItemEditorCode = "ad";
