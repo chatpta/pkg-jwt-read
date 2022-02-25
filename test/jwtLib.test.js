@@ -204,7 +204,7 @@ describe( "Lib controller jwt", function () {
         }
 
         // Act
-        const jwtMiddleware = jwt.verifyJwt( "admin", publicKey, throwUsedTokenError );
+        const jwtMiddleware = jwt.verifyJwt( publicKey, throwUsedTokenError );
         await jwtMiddleware( req, res, next );
 
         // Assert
