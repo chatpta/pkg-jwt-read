@@ -4,6 +4,7 @@ const jwtRoles = require( './lib/jwtRoles' );
 
 module.exports = {
     verifyJwt: jwtLib.verifyJwt,
+    verifyJwtNoThrow: jwtLib.verifyJwtNoThrow,
     jwtClientId: jwtLib.jwtClientId,
     isJwtExpired: jwtLib.isJwtExpired,
     verifyJwtAndRole: jwtLib.verifyJwtAndRole,
