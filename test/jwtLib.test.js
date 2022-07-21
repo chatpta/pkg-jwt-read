@@ -440,4 +440,37 @@ describe( "Lib controller jwt", function () {
         // Assert
         assert.deepStrictEqual( req.jwt, null );
     } );
+
+    it( "verifyVisitorNoThrow good jwt", async function () {
+
+        const visitorToken = 'Bearer eyJhbGciOiJzaGE1MTIiLCJ0eXAiOiJKV1QifQ.eyJpYXQiOjE2NDI0NjMzNDQyNzgsImNsaWVudF9pZCI6IjRmZTg5ODlkLWZlOWQtNDEwMS1hZWVmLTVkYjljYmMwNzlkZiIsInJvbGVzIjpbImFkbWluIl0sImVtYWlsX25vdF9jb25maXJtZWQiOnRydWV9.LDT5gfpjtC3PZ8XdbS4QtdEbUWDY_UH3hbdeEt5dDJqOpH-1pHEUvd2N2QtoYmrPby23-X-Y7Oy-8JiGWjxNuLRpUgePuOJzEz4keYOrUTDCE1tL4vmmFk59eXkg0FILOJypAfZom8BM2iecSXkKK1EFKjo6pHZH8XCA3mpg8Lg';
+
+        // Arrange
+        const req = {
+            get( header ) {
+                if ( header === "Visitor" ) {
+                    return visitorToken;
+                }
+            }
+        };
+
+        const res = {
+            send( message ) {
+                this.body = message
+            }
+        };
+        const next = () => {
+        }
+
+        function throwUsedTokenError() {
+            throw new Error( "Used_Token" );
+        }
+
+        // Act
+        const jwtMiddleware = jwt.verifyVisitorNoThrow( publicKey, throwUsedTokenError );
+        await jwtMiddleware( req, res, next );
+
+        // Assert
+        assert.deepStrictEqual( req.visitor.payload.iat, 1642463344278 );
+    } );
 } );
