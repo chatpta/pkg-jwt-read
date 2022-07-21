@@ -443,13 +443,21 @@ describe( "Lib controller jwt", function () {
 
     it( "verifyVisitorNoThrow good jwt", async function () {
 
-        const visitorToken = 'Bearer eyJhbGciOiJzaGE1MTIiLCJ0eXAiOiJKV1QifQ.eyJpYXQiOjE2NDI0NjMzNDQyNzgsImNsaWVudF9pZCI6IjRmZTg5ODlkLWZlOWQtNDEwMS1hZWVmLTVkYjljYmMwNzlkZiIsInJvbGVzIjpbImFkbWluIl0sImVtYWlsX25vdF9jb25maXJtZWQiOnRydWV9.LDT5gfpjtC3PZ8XdbS4QtdEbUWDY_UH3hbdeEt5dDJqOpH-1pHEUvd2N2QtoYmrPby23-X-Y7Oy-8JiGWjxNuLRpUgePuOJzEz4keYOrUTDCE1tL4vmmFk59eXkg0FILOJypAfZom8BM2iecSXkKK1EFKjo6pHZH8XCA3mpg8Lg';
+        const visitor = {
+            version: '1.0.0',
+            status: 'success',
+            originalUrl: '/api/v1/auth/visitor',
+            data: {
+                visitor_id: 'b63887af-4fd5-47ad-9aed-687866809554',
+                visitor_token: 'bearer eyJhbGciOiJzaGE1MTIiLCJ0eXAiOiJKV1QifQ.eyJpYXQiOjE2NTg0NDQyOTA1OTgsImNsaWVudF9pZCI6ImI2Mzg4N2FmLTRmZDUtNDdhZC05YWVkLTY4Nzg2NjgwOTU1NCJ9.UHYuMeGUDBpq6vvLAkg5kAjhE7j1zKjtHoOTxHN8r1_jx0KBwobD_DJxRSXp_RI884uKZa3FuZksHHLAn85tarvDf0-c0NDBfSrtST_rMsjKsO4p5n4CDTv346-drSZODtLuG18EPT2vOQ_0BKw7yS9i7B_l-Uxjqdl84UtfhYc'
+            }
+        }
 
         // Arrange
         const req = {
             get( header ) {
                 if ( header === "Visitor" ) {
-                    return visitorToken;
+                    return visitor.data.visitor_token;
                 }
             }
         };
@@ -471,6 +479,6 @@ describe( "Lib controller jwt", function () {
         await jwtMiddleware( req, res, next );
 
         // Assert
-        assert.deepStrictEqual( req.visitor.payload.iat, 1642463344278 );
+        assert.deepStrictEqual( req.visitor.payload.client_id, visitor.data.visitor_id );
     } );
 } );

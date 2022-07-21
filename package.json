@@ -1,6 +1,6 @@
 {
   "name": "@chatpta/jwt-read",
-  "version": "3.0.12",
+  "version": "3.0.13",
   "repository": "https://github.com/chatpta/auth-util",
   "description": "Auth utility functions",
   "main": "index.js",
