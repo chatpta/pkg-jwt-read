@@ -7,6 +7,7 @@ module.exports = {
     verifyJwtNoThrow: jwtLib.verifyJwtNoThrow,
     verifyVisitorNoThrow: jwtLib.verifyVisitorNoThrow,
     jwtClientId: jwtLib.jwtClientId,
+    visitorClientId: jwtLib.visitorClientId,
     isJwtExpired: jwtLib.isJwtExpired,
     verifyJwtAndRole: jwtLib.verifyJwtAndRole,
     throwUsedTokenError: jwtLib.throwUsedTokenError,
