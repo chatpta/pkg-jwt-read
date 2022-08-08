@@ -149,6 +149,18 @@ describe( "Lib controller jwt", function () {
         assert.deepStrictEqual( clientId, '8b0db877-a6b3-4a23-a493-e687915cdd87' );
     } );
 
+    it( "visitorClientId", async function () {
+
+        // Arrange
+        const req = { visitor: { payload: { client_id: '8b0db877-a6b3-4a23-a493-e687915cdd87' } } };
+
+        // Act
+        let clientId = jwt.visitorClientId( req );
+
+        // Assert
+        assert.deepStrictEqual( clientId, '8b0db877-a6b3-4a23-a493-e687915cdd87' );
+    } );
+
     it( "verifyJwtAndRole", async function () {
 
         const validJwt = 'Bearer eyJhbGciOiJzaGE1MTIiLCJ0eXAiOiJKV1QifQ.eyJpYXQiOjE2Mzg3MjM1ODkyOTYsImNsaWVudF9pZCI6ImRhZDZlYjZhLWQwMGYtNDZhNS04N2Y2LWY4MDEwNGMzYTUzOCIsInJvbGVzIjpbImFkbWluIl19.Pt3dA-aOpER4ykEVDbzvJe92uIurz0OSOi3Zd2UjWkexUeFIbW_ID5RlCs47VI0UzZMyCTlNvkMGUA-1aCtN3y_IR2PPUdd51t9F3hTeH5XcqInJpG40wc4aw8XKLm1QG6aCw5HoLHuAxd5oc9cqU1ZuF4LsMpTwr-pJNdjEZug';
