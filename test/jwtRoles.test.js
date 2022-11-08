@@ -69,4 +69,26 @@ describe( "Lib jwt Roles", function () {
         // Assert
         assert.deepStrictEqual( receivedCode, "item editor" );
     } );
+
+    it( "getCategoryEditorRoleCode", function () {
+
+        const roleCategoryEditorCode = "ce";
+
+        // Act
+        const receivedCode = jwtRoles.getCategoryEditorRoleCode();
+
+        // Assert
+        assert.deepStrictEqual( receivedCode, roleCategoryEditorCode );
+    } );
+
+    it( "getNameOfRoleFromCode", function () {
+
+        const roleItemEditorCode = "ce";
+
+        // Act
+        const receivedCode = jwtRoles.getNameOfRoleFromCode( roleItemEditorCode );
+
+        // Assert
+        assert.deepStrictEqual( receivedCode, "category editor" );
+    } );
 } );
