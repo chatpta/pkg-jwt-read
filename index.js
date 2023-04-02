@@ -16,6 +16,8 @@ module.exports = {
     sellerRole: jwtRoles.getJwtSellerRoleCode,
     itemEditorRole: jwtRoles.getJwtEditorRoleCode,
     categoryEditorRole: jwtRoles.getCategoryEditorRoleCode,
+    physicianRole: jwtRoles.getPhysicianRoleCode,
+    edAdminRole: jwtRoles.getEDAdminRoleCode,
     getNameOfRole: jwtRoles.getNameOfRoleFromCode
 };
 
